@@ -1,3 +1,4 @@
 <?php
-  echo 'php';
-  ?>
+    echo 'index.php';
+    echo 'local add';
+    ?>
