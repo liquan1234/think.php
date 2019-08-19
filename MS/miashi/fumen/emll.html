@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    // function isEmail(email){
+    //     // console.log(email);
+    //     if (email=="") {
+    //         alert("邮箱不能为空") ;
+    //     } else if (email.split("@").length==1 || email.split(".").length==1) {
+    //         alert("邮箱地址必须包含@和.");
+    //
+    //     } else if(email.match(/^\w+([._-]\w+)*@(\w+\.)+\w+$/) ){
+    //         let arr = email.split("@") ;
+    //         alert("邮箱地址正确，邮箱名称是："+arr[0]) ;
+    //     } else{
+    //         alert('正则不过');
+    //     }
+    // }
+    function isEmail(email){
+        if(email==''){
+            alert('邮箱不能为空');
+        }else if(!email.match(/^\w+([._-]\w+)*@(\w+\.)+\w+$/)){
+            alert('邮箱输入有误')
+        }else{
+            let arr = email.split('@');
+            alert('"邮箱地址正确，邮箱名称是："+arr[0]');
+        }
+    }
+
+</script>
+<body>
+    <input type="button" value="点我" onclick="isEmail(prompt('请输入正确的邮箱地址','suan@sohu.com'))" />
+</body>
+</html>

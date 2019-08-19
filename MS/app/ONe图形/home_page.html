@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='echarts.js'></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+            content: "";
+            display: block;
+            height: 0;
+            clear:both;
+            visibility: hidden;
+        }
+        .clearfix{
+            *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+        }
+
+    </style>
+</head>
+<body>
+
+<div  style="width: 400px;height:320px;float:left;border:1px solid red; margin-left:40px;">
+        <table style="border-collapse: collapse" width="400" border="1">
+        <tr>
+            <td style="height:10px; background-color:#8ea9db;" colspan="4"></td>
+        </tr>
+          <tr>
+            <th colspan="4" height="30" style="color:#ffffff;background-color:#203764;">按月份季度统计分析报告</th>
+          </tr>
+        <tr>
+            <td colspan="4" height="1"></td>
+          </tr>
+          <tr style="margin-top:5px;background-color:#8ea9db;">
+
+            <td style="text-align: center;" height="30">月份</td>
+            <td style="text-align: center;" height="30">数据</td>
+            <td style="text-align: center;" height="30">季度</td>
+            <td style="text-align: center;" height="30">按季度统计</td>
+          </tr>
+          
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >1月</td>
+            <td style="text-align: right;" >22</td>
+            <td style="text-align: center;" rowspan="3">一季度</td>
+            <td style="text-align: center;" rowspan="3">221</td>
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >2月</td>
+            <td style="text-align: right;" >22</td>
+           
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >3月</td>
+            <td style="text-align: right;" >22</td>
+           
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >4月</td>
+            <td style="text-align: right;" >22</td>
+            <td style="text-align: center;" rowspan="3">二季度</td>
+            <td style="text-align: center;" rowspan="3">222</td>
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >5月</td>
+            <td style="text-align: right;" >22</td>
+           
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >6月</td>
+            <td style="text-align: right;" >22</td>
+          
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >7月</td>
+            <td style="text-align: right;" >22</td>
+            <td style="text-align: center;" rowspan="3">三季度</td>
+            <td style="text-align: center;" rowspan="3">223</td>
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >8月</td>
+            <td style="text-align: right;" >22</td>
+           
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >9月</td>
+            <td style="text-align: right;" >22</td>
+            
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >10月</td>
+            <td style="text-align: right;" >22</td>
+            <td style="text-align: center;" rowspan="3">四季度</td>
+            <td style="text-align: center;" rowspan="3">224</td>
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >11月</td>
+            <td style="text-align: right;" >22</td>
+          
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >12月</td>
+            <td style="text-align: right;" >22</td>
+           
+          </tr>
+           </tr>
+           <tr style="margin-top:5px;">
+            <td style="text-align: left;" >总计</td>
+            <td style="text-align: center; background-color: #f8696b; " colspan="3">666</td>
+            
+          </tr>
+
+        </table>
+
+</div>
+    <div  style="border:1px solid red; line-height: 40px; font-weight: bold; height: 40px; width: 800px;float:right;text-align : center; color:#808083; margin-right:105px;">月份数据一览折线图</div>
+	 <div id="chart" style="width: 800px;height:280px;float:left;border:1px solid red;">
+       
+     </div>
+
+     <div style="border:1px solid red;width: 100%;height:300px;float: left;">
+            <div id="histogram" style="width: 800px;height:300px; float: left; border:1px solid red;"></div>
+
+         <div style="float:left;border:1px solid blue;width:400px; height:300px;margin-top:10px;margin-left:10px;" >
+           <div  style="border:1px solid red;width:250px; height:90px;">   
+               <input type="text" style="width:90px;height:40px; text-align:center; border-radius:10px; border:2px solid #2f5597;outline-style: none ;background-color:#2f5597;font-size:15px;color:#ffffff;" value="123">
+               <input type="text" style="width:90px;height:40px; text-align:center; border-radius:10px; border:2px solid #2f5597;outline-style: none ;background-color:#2f5597;font-size:15px;color:#ffffff;" value="345">
+               <input type="text" style="width:90px;height:40px; text-align:center;border: 0px;outline-style: none ;" value="一季度">
+               <input type="text" style="width:90px;height:40px; text-align:center;border: 0px;outline-style: none ;" value="二季度">
+            </div>
+            <div>
+                    
+                <div style="width:190px;height:50px;text-align:center;border-radius:10px; border:2px solid #404040;outline-style: none ;background-color: #404040; "><img style=" margin-bottom: 10px; margin-right: 30px; " src="./lq.png" width="25" height="25"><span style="line-height:50px;font-size:12px;color:#ffffff;font-weight:bold;">共计:</span><span style="line-height:50px;font-weight:bold;font-size:18px;color:#ffffff;">789</span></div>
+            </div>
+
+            <div  style="border:1px solid red;width:250px; height:90px;margin-top:25px;">   
+               <input type="text" style="width:90px;height:40px; text-align:center; border-radius:10px; border:2px solid #2f5597;outline-style: none ;background-color:#2f5597;font-size:15px;color:#ffffff;" value="123">
+               <input type="text" style="width:90px;height:40px; text-align:center; border-radius:10px; border:2px solid #2f5597;outline-style: none ;background-color:#2f5597;font-size:15px;color:#ffffff;" value="345">
+               <input type="text" style="width:90px;height:40px; text-align:center;border: 0px;outline-style: none ;" value="三季度">
+               <input type="text" style="width:90px;height:40px; text-align:center;border: 0px;outline-style: none ;" value="四季度">
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+
+        // 指定图表的配置项和数据
+        var option = { 
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['一月', '2月', '3月', '4月', '5月', '6月', '7月','8月','9月','10月','11月','12月']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320,153,186,452,1568,152],
+                    type: 'line',
+                    areaStyle: {}
+                }]
+            };
+
+        myChart.setOption(option);
+</script>
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('histogram'));
+
+        // 指定图表的配置项和数据
+    
+option = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data:['访问量','并发量']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '访问量',
+            min: 0,
+            max: 500,
+            interval: 50,
+            axisLabel: {
+                formatter: '{value} 我'
+            }
+        },
+      
+    ],
+    series: [
+        {
+            name:'访问量',
+            type:'bar',
+            data:[23, 34,445, 56, 67, 78, 135, 162, 36, 20, 456,56]
+        },
+        {
+            name:'并发量',
+            type:'bar',
+            data:[87, 45, 60, 261, 287, 77, 17, 182, 48, 188, 60, 231]
+        },
+       
+    ]
+};
+
+
+myChart.setOption(option)
+</script>
+
+</html>

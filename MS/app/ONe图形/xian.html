@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='echarts.js'></script>
+</head>
+<body>
+<div>月份数据一览折线图</div>
+	 <div id="chart" style="width: 600px;height:400px;"></div>
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+
+        // 指定图表的配置项和数据
+        var option = { 
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['一月', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun','8月','9月','10月','11月','12月']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320,153,186,452,1568,152],
+                    type: 'line',
+                    areaStyle: {}
+                }]
+            };
+
+        myChart.setOption(option);
+</script>
+
+</html>

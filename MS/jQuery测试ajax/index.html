@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jQuery.js">
+      
+          
+    </script>
+    <script>
+                    var arr = '你点我干嘛'
+            $(document).ready(function(){
+                $("#text").bind("click",function(){
+                  
+                    $.ajax({
+                        url: './greet.php',
+                        data:{name:arr},          // 要发送的请求数据
+                        type: "post",
+                        dataType: 'json',
+                        success : function (result){
+                        
+                        //   console.log($('#list')[0].innerHTML)
+                            $('#list')[0].innerText = result     // 接受放回的参数 然后渲染上去
+                           
+                        }
+                       
+                    })
+                });
+                
+             
+            });
+
+
+    </script>
+</head>
+<body>
+    <div id="list">我在这里</div>
+	<input id="text" type="button" value="点击"/> 
+	
+	
+</body>
+</html>

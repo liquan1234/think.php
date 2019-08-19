@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<p>段落</p>
+	<button id="btn">点击</button>
+</body>
+<script>
+	$(document).ready(function(){
+		$("#btn").click(function(){
+			alert("hello");
+			$("p").slideToggle();
+		});
+	})
+</script>
+</html>
