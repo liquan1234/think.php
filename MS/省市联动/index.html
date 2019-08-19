@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+             // 获取省市下拉框
+             var province = document.getElementById('province')
+             var city = document.getElementById('city')
+             // 向服务器端发送请求 获取省级数据
+                var xhr = new XMLHttpRequest();
+                xhr.open('get','./getProvince.php')
+                xhr.send(null)
+                xhr.onreadystatechange = function(){
+                    if(xhr.status == 200 && xhr.readyState ==4){
+                        var json = JSON.parse(xhr.responseText) // 接受数据 转化为对象
+                    // console.log(json)
+                        for(var i in json){
+                            var opt = document.createElement('option')
+                            // console.log(opt)
+                           
+                            opt.value = i
+                            // console.log(json[i])
+                           
+                            opt.innerHTML = json[i]
+                            province.appendChild(opt)
+                        }
+                    }
+                }
+                province.onchange = function(){
+                   
+            // console.log(this.value)
+                var xhr = new XMLHttpRequest();
+                xhr.open('get','./getCity.php?province='+this.value)
+                xhr.send(null)
+                xhr.onreadystatechange = function(){
+                    if(xhr.status == 200 && xhr.readyState == 4){
+                        var json = JSON.parse(xhr.responseText)
+
+                        city.length = 0  // 清空就选项
+                        for(var j in json){
+                            var opt = document.createElement('option') // 复制一个这个标签
+                            opt.value = j
+                            opt.innerHTML = json[j]
+                            // 把选项 追加到 省份下拉框当中
+                            city.appendChild(opt)
+                        }
+                    }
+                }
+            }
+        }
+       
+    </script>
+</head>
+<body>
+    省： <select name="" id="province">
+            <option value="-1" disabled selected>请选择省</option>
+         </select>
+    市： <select name="" id="city">
+            <option value="-1" disabled selected>请先选择省</option>
+         </select>
+</body>
+</html>
